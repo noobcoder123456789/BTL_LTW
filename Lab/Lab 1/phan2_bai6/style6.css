@@ -102,3 +102,17 @@
     font-weight: bold; 
     margin-bottom: 20px;
 }
+
+.technology-div {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-end;
+}
+
+.technology-button {
+    background-color: orange; 
+    color: white; 
+    border: none;
+    padding: 5px 15px;
+    margin-bottom: 20px;
+}
