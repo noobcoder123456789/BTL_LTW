@@ -1,0 +1,70 @@
+h1 {
+    text-shadow: 4px 6px 0 blue; 
+    color: red;
+    font-size: 50px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+p {
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+}
+
+strong {
+    font-size: 30px; 
+    text-decoration: underline;
+}
+
+u {
+    font-size: 30px;
+}
+
+h2 {
+    color: #993333;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 30px;
+}
+
+ul, li, a {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+}
+
+li {
+    padding: 4px;
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 2px solid rgb(230, 229, 229);
+    padding: 5px;
+    text-align: center;
+}
+
+#i-letter {
+    font-size: 100px; 
+    text-decoration: none;
+}
+
+#red {
+    color: red;
+}
+
+#blue {
+    color: blue;
+}
+
+a {
+    color: blue;
+}
+
+#twitter {
+    color: teal;
+    text-shadow: 2px 2px 3px gray, 2px 2px 3px gray;
+    text-decoration: none;
+    font-weight: bold;
+}

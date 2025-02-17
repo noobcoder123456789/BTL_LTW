@@ -1,0 +1,104 @@
+.background {
+    margin: 0;
+    background-image: url('../refs/images03/bg-body.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-flow: row nowrap;
+}
+
+.container {
+    width: 43.75%;
+    background-color: transparent;
+}
+
+.content {    
+    width: 70%;
+    text-align: justify;
+    display: flex;
+    flex-flow: row wrap;
+    background-color: white;
+}
+
+.image {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.content-name {
+    color: rgb(203, 241, 32);
+    font-size: 22px;
+    font-family: 'Georgia', serif;
+}
+
+.content-update-date {
+    font-size: 12px;
+    color: rgb(212, 212, 212);
+}
+
+.comment {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    color: rgb(72, 183, 183);
+}
+
+.newsfeed {
+    background-color: white; 
+    width: 30%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.newsfeed-box {    
+    width: 80%;
+    margin: 0;
+    border-radius: 10px;
+    height: auto;
+    padding: 0;
+    background-color: white;
+    position: relative;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    width: 100%;
+    background-color: #EEEEEE;
+    margin: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    border-radius: 0 0 15px 15px;    
+}
+
+li {
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    margin: 0 0 0 10px;
+}
+
+li:last-child {
+    border-bottom: none;
+    margin-bottom: 20px;
+}
+
+.button-feed {
+    position: absolute; 
+    top: 0;
+    height: 25px;
+    width: 100px;
+    object-fit: cover;
+    object-position: top;
+    z-index: 1;
+    left: 35px;
+}
+
+.newsfeed-header {
+    background-color: #EEEEEE;
+    position: relative;
+}

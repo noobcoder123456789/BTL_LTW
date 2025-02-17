@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* Thiết lập border cho bảng */
+    table, tr, th, td {
+      border: 1px solid black;
+    }
+    /* Canh giữa tiêu đề bảng */
+    th {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <img src="../refs/images01/logo.png" alt="logo">
+
+  <h1>About</h1>
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+
+  <h1>Intro</h1>
+
+  <div style="width: 500px;">
+    <video controls src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"></video>
+  </div>      
+
+  <h1>Our Locations</h1>
+
+  <!-- Sửa cấu trúc danh sách lồng nhau: Mỗi nhóm sẽ nằm trong 1 thẻ li -->
+  <ul>
+    <li>USA
+      <ul>
+        <li><a href="https://www.meetup.com/girldevelopit/">New York</a></li>
+        <li><a href="https://www.meetup.com/girldevelopitcbus/">Columbus</a></li>
+        <li><a href="https://www.meetup.com/girl-develop-it-austin/">Austin</a></li>
+        <li><a href="https://www.meetup.com/Girl-Develop-It-Philadelphia/">Philly</a></li>
+      </ul>
+    </li>
+    <li>World
+      <ul>
+        <li><a href="https://www.meetup.com/girldevelopit/">Ottawa</a></li>
+        <li><a href="https://www.meetup.com/girldevelopitcbus/">Sydney</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <h1>Upcoming Classes</h1>
+
+  <table>
+    <tr>
+      <!-- Thay align bằng style để canh giữa -->
+      <th style="text-align: center;">Location</th>
+      <th style="text-align: center;">Topic</th>
+    </tr>
+    <tr>
+      <td>New York</td>
+      <td>JavaScript & jQuery</td>
+    </tr>
+    <tr>
+      <td>San Francisco</td>
+      <td>HTML & CSS</td>
+    </tr>
+  </table>
+
+  <h1>Sign Up!</h1>
+
+  <form action="#">
+    <p>Name: <input type="text"></p>
+    <p>Email: <input type="email"></p>
+    <p>
+      Locations: 
+      <select name="location" id="location">
+        <option value="volvo">New York</option>
+        <option value="saab">San Francisco</option>
+      </select>
+    </p>
+    
+    <table style="width: 100%; background-color: transparent; position: relative; border: none;">
+      <tr>
+        <td style="padding-top: 10px; padding-bottom: 10px;">
+            <span style="background-color: white; position: relative; top: -20px; left: 20px; z-index: 1;">
+                Gender:
+            </span>
+
+            <label for="female">Female</label>
+            <input type="checkbox" id="female" name="female" value="Female">   
+            <label for="male">Male</label>                 
+            <input type="checkbox" id="male" name="male" value="Male">                    
+        </td>
+      </tr>
+    </table>
+
+    <p>Experience:</p>
+    <textarea name="Experience" id="Experience"></textarea>
+
+    <p><button type="submit">Sign Up</button></p>
+
+    <p>
+      <a href="http://twitter.com/girldevelopit">Twitter</a> | 
+      <a href="http://www.facebook.com/girldevelopit">Facebook</a> | 
+      <a href="http://www.flickr.com/photos/40453677@N00/sets/72157626841092971/">Flickr</a>
+    </p>
+  </form>
+</body>
+</html>
