@@ -2,7 +2,7 @@
     display: flex; 
     flex-flow: row wrap; 
     justify-content: space-between; 
-    margin: 20px;
+    margin: 10px;
 }
 
 .position-temperature {
@@ -32,17 +32,73 @@
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
 }
 
 .menu-option {
     display: flex;
     flex-flow: row wrap;
-    display: flex;
-    flex-flow: row wrap;
+    width: 40%;
+    justify-content: space-around;
 }
 
 .menu-option-selection {
     color: white;
     font-size: 20px;
     font-weight: bold;
+}
+
+#breaking-news {
+    border-bottom: 5px solid black; 
+    display: inline-block; 
+    padding-bottom: 5px; 
+    font-weight: bold;
+}
+
+.category-text {
+    color: rgb(236, 160, 66);
+    font-weight: bold;
+}
+
+.locket-text {
+    background-color: rgb(19, 19, 139);
+    color: white;
+    text-align: center;
+    padding: 0 10px 1px 10px;
+    margin: 10px 0;
+    font-weight: normal;
+    display: inline;
+}
+
+.main-content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.popular-content {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.subscribe-box {
+    background-color: black;
+    padding: 10px 20px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.left-hot-news-area {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.hot-news-title {
+    font-weight: bold; 
+    margin-bottom: 20px;
 }
