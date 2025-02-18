@@ -101,12 +101,26 @@
 .hot-news-title {
     font-weight: bold; 
     margin-bottom: 20px;
+    color: black;
+}
+
+#super-hot-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
 
 .technology-div {
     display: flex;
     flex-flow: column wrap;
     justify-content: flex-end;
+    width: 49%;
+    aspect-ratio: 1 / 1;
+    background-repeat: none;
+    background-size: cover;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.7) 100%), url(../refs/images04/no_img.jpg);;
+    padding: 20px 20px 0 10px;
+    margin-bottom: 20px;
 }
 
 .technology-button {
@@ -114,5 +128,88 @@
     color: white; 
     border: none;
     padding: 5px 15px;
+    align-self: flex-start;
+    font-size: 24px;
     margin-bottom: 20px;
+}
+
+.destinations-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.destination-child-title {
+    font-weight: bold; 
+    font-size: 18px;
+    width: 70%;
+}
+
+.destinations-child-image {
+    width: 30%;
+}
+
+.world-of-women-hot-container {
+    margin: 0 0 20px 0; 
+    padding: 0; 
+    display: flex; 
+    flex-flow: row wrap; 
+    justify-content: space-between
+}
+
+.world-of-women-hot-child {
+    width: 49%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.world-of-women-chill-child {
+    width: 19%;
+}
+
+#readmore-div {
+    width: 100%; 
+    display: flex; 
+    flex-flow: row wrap; 
+    justify-content: center;
+}
+
+#readmore-button {
+    background-color: black; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none;
+}
+
+.subscribe-ad-text {
+    font-size: 25px; 
+    font-family: 'Clarendon', 'Roboto Slab', 'Serif'; 
+    font-weight: bold;
+}
+
+#subcribe-email-input {
+    width: 100%; 
+    padding: 5px 20px;
+    font-size: 26px;
+    margin-top: 10px;
+    border: 1px solid rgb(206, 206, 206);
+}
+
+#unlock-all-button {
+    background-color: black; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none;
+    margin-top: 20px; 
+    width: 100%;
+    padding: 20px 0;
+    font-weight: bold;
+}
+
+#readed-checkbox {
+    width: 32px; 
+    height: 32px;
+    margin-top: 20px;
 }
