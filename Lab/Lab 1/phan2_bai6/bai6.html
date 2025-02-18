@@ -56,8 +56,8 @@
 
     <div class="menu-bar">
         <div>
-            <h3 style="color: white;">Website</h3>
-            <h4 style="color: white;">TITLE</h4>
+            <h3 style="color: white; margin-bottom: 0;">Website</h3>
+            <h5 style="color: white; margin-top: 0;">TITLE</h5>
         </div>
         
         <div class="menu-option">
@@ -215,7 +215,7 @@
                         Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
                     </h4>
 
-                    <p>
+                    <p style="font-size: 20px;">
                         Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore
                     </p>
 
@@ -242,7 +242,7 @@
                         Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eius
                     </h4>
 
-                    <p>
+                    <p style="font-size: 20px;">
                         Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore
                     </p>
 
@@ -570,7 +570,7 @@
                 </div>
             </div>
             
-            <div id="readmore-div">
+            <div class="readmore-div">
                 <button id="readmore-button">
                     LOAD MORE >
                 </button>
@@ -588,8 +588,8 @@
             
             <hr style="border: 3px solid black; opacity: 1;">
 
-            <div>
-                <h5 style="color: rgb(236, 160, 66);">Music</h5>
+            <div style="padding-bottom: 0;">
+                <h3 style="color: rgb(236, 160, 66);">Music</h3>
 
                 <h1 style="font-weight: bold; color: black;">
                     Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
@@ -601,7 +601,7 @@
             </div>
 
             <div>
-                <h5 style="color: rgb(236, 160, 66);">Music</h5>
+                <h3 style="color: rgb(236, 160, 66);">Music</h3>
 
                 <h1 style="font-weight: bold; color: black;">
                     Lorem ipsum dolor sit amet consectetur adipiscing elit sed do e
@@ -617,7 +617,7 @@
             </div>
 
             <div>
-                <h5 style="color: rgb(236, 160, 66);">Music</h5>
+                <h3 style="color: rgb(236, 160, 66);">Music</h3>
 
                 <h1 style="font-weight: bold; color: black;">
                     <span class="locket-text" style="font-size: 30px;">LOCKED</span>
@@ -630,7 +630,7 @@
             </div>
 
             <div>
-                <h5 style="color: rgb(236, 160, 66);">Music</h5>
+                <h3 style="color: rgb(236, 160, 66);">Music</h3>
 
                 <h1 style="font-weight: bold; color: black;">
                     Lorem ipsum dolor sit amet consectetur adipiscing elit sed
@@ -642,7 +642,7 @@
             </div>
 
             <div>
-                <h5 style="color: rgb(236, 160, 66);">Music</h5>
+                <h3 style="color: rgb(236, 160, 66);">Music</h3>
 
                 <h1 style="font-weight: bold; color: black;">
                     Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
@@ -654,7 +654,7 @@
             </div>
 
             <div>
-                <h5 style="color: rgb(236, 160, 66);">Food</h5>
+                <h3 style="color: rgb(236, 160, 66);">Food</h3>
 
                 <h1 style="font-weight: bold; color: black;">
                     Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiu
@@ -665,8 +665,8 @@
                 </p>
             </div>
 
-            <div>
-                <h5 style="color: rgb(236, 160, 66);">Food</h5>
+            <div style="padding-bottom: 0;">
+                <h3 style="color: rgb(236, 160, 66);">Food</h3>
 
                 <h1 style="font-weight: bold; color: black;">
                     <span class="locket-text" style="font-size: 30px;">LOCKED</span>
@@ -676,6 +676,38 @@
                 <p style="font-size: 20px;">
                     Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim
                 </p>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center" style="margin-top: 50px;">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item active page-item-custom" aria-current="page">
+                            <span class="page-link">1</span>
+                        </li>
+                    
+                        <li class="page-item page-item-custom">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                    
+                        <li class="page-item page-item-custom">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                    
+                        <li class="page-item disabled">
+                            <span class="page-link">...</span>
+                        </li>
+                    
+                        <li class="page-item page-item-custom">
+                            <a class="page-link" href="#">8</a>
+                        </li>
+                    
+                        <li class="page-item page-item-custom">
+                            <a class="page-link" href="#">&gt;</a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <div>Page 1 of 8</div>
             </div>
         </div>
 
@@ -702,12 +734,195 @@
 
                     <button id="unlock-all-button">
                         UNLOCK ALL
-                    </button>
+                    </button>                    
 
-                    <input type="checkbox" name="readed-checkbox" id="readed-checkbox">
+                    <p style="font-size: 24px; margin-top: 20px; font-family: 'Clarendon', 'Roboto Slab', 'Serif'; ">
+                        <label for="accept-privacy">
+                            <input type="checkbox" id="accept-privacy" name="accept-privacy" required style="width: 16px; height: 16px;">
+                            I've read and accept the 
+                            <a style="text-decoration: none; font-weight: bold; color: black;" href="privacy.html" target="_blank">Privacy Policy</a>.
+                        </label>
+                    </p>
                 </div>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <div class="left-hot-news-area">
+                    <h3 style="font-weight: bold; color: black;">
+                        Food
+                    </h3>
+                </div>
+                
+                <hr style="border: 3px solid black; opacity: 1;">
+    
+                <div>
+                    <img src="../refs/images04/no_img.jpg" style="width: 100%;" alt="">
+
+                    <h5 style="color: rgb(236, 160, 66); margin-top: 20px;">
+                        Food
+                    </h5>
+
+                    <h4 style="font-weight: bold; color: black;">
+                        Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiu
+                    </h4>
+                </div>
+
+                <div style="margin-top: 40px;">
+                    <img src="../refs/images04/no_img.jpg" style="width: 100%;" alt="">
+
+                    <h5 style="color: rgb(236, 160, 66); margin-top: 20px;">
+                        Food
+                    </h5>
+
+                    <h4 style="font-weight: bold; color: black;">
+                        <span class="locket-text">LOCKED</span>
+                        Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod te
+                    </h4>
+                </div>
+
+                <div>
+                    <img src="../refs/images04/no_img.jpg" style="width: 100%;" alt="">
+
+                    <h5 style="color: rgb(236, 160, 66); margin-top: 20px;">
+                        Food
+                    </h5>
+
+                    <h4 style="font-weight: bold; color: black;">
+                        Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eius
+                    </h4>
+                </div>
+            </div>
+
+            <div class="readmore-div" style="margin: 20px 0;">
+                <button style="background-color: black; color: white; padding: 10px 20px; border: none;">
+                    VIEW ALL
+                </button>
             </div>
         </div>
     </div>
+
+    <footer style="background-color: black;">
+        <div class="logo-social-media">
+            <div>
+                <h3 style="color: white; margin-bottom: 0;">Website</h3>
+                <h5 style="color: white; margin-top: 0;">TITLE</h5>
+            </div>
+
+            <div class="socal-media">
+                <div style="width: 50px; height: 50px; background-color: white; display: flex; justify-content: center; align-items: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" style="width: 24px; height: 24px;">
+                      <path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/>
+                    </svg>
+                </div>
+    
+                <div style="width: 50px; height: 50px; background-color: white; display: flex; justify-content: center; align-items: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="width: 24px; height: 24px;">
+                        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                    </svg>
+                </div>
+
+                <div style="width: 50px; height: 50px; background-color: white; display: flex; justify-content: center; align-items: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width: 24px; height: 24px;">
+                        <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
+                    </svg>
+                </div>
+                
+                <div style="width: 50px; height: 50px; background-color: white; display: flex; justify-content: center; align-items: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style="width: 24px; height: 24px;">
+                        <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z"/>
+                    </svg>
+                </div>
+            </div>            
+        </div>
+
+        <div class="category-footer">
+            <h5 class="active">Home</h5>
+            <h5 style="color: white;">Finance</h5>
+            <h5 style="color: white;">Marketing</h5>
+            <h5 style="color: white;">Politics</h5>
+            <h5 style="color: white;">Technology</h5>
+            <h5 style="color: white;">Women</h5>
+            <h5 style="color: white;">Celebrity</h5>
+            <h5 style="color: white;">Travel</h5>
+            <h5 style="color: white;">Food</h5>
+            <h5 style="color: white;">Music</h5>
+        </div>
+
+        <div class="option-footer">
+            <div class="option-footer-child">
+                <h3 style="font-weight: bold; color: white;">
+                    Company
+                </h3>
+    
+                <p style="color: white;">
+                    Each template in our ever growing studio library can be added and moved around within any page effortlessly with one click.
+                </p>
+
+                <h5 style="font-size: 18px; margin-top: 20px; margin-bottom: 20px; color: white;">About us</h5>
+                <h5 style="font-size: 18px; margin-top: 20px; margin-bottom: 20px; color: white;">Contact us</h5>
+            </div>
+
+            <div class="option-footer-child">
+                <h3 style="font-weight: bold; color: white;">
+                    Latest
+                </h3>
+    
+                <p style="color: white;">
+                    Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
+                </p>
+
+                <p style="color: white;">
+                    Lorem ipsum dolor sit amet consectetur adipiscing elit sed do e
+                </p>
+
+                <p style="color: white;">
+                    <span class="locket-text">LOCKED</span>
+                    Lorem ipsum dolor sit amet consectetur adipiscing elit sed
+                </p>
+            </div>
+
+            <div class="option-footer-child">
+                <h3 style="font-weight: bold; color: white;">
+                    Popular
+                </h3>
+    
+                <p style="color: white;">
+                    Lorem ipsum dolor sit amet consectetur adipiscing elit sed
+                </p>
+
+                <p style="color: white;">
+                    Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eius
+                </p>
+
+                <p style="color: white;">
+                    <span class="locket-text">LOCKED</span>
+                    Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eius
+                </p>
+            </div>
+
+            <div class="option-footer-child">
+                <h3 style="font-weight: bold; color: white;">
+                    Sitemap
+                </h3>
+
+                <h5 style="font-size: 18px; margin-top: 20px; margin-bottom: 20px; color: white;">News</h5>
+                <h5 style="font-size: 18px; margin-top: 20px; margin-bottom: 20px; color: white;">Women</h5>
+                <h5 style="font-size: 18px; margin-top: 20px; margin-bottom: 20px; color: white;">Celebrity</h5>
+                <h5 style="font-size: 18px; margin-top: 20px; margin-bottom: 20px; color: white;">Travel</h5>
+                <h5 style="font-size: 18px; margin-top: 20px; margin-bottom: 20px; color: white;">Food</h5>
+                <h5 style="font-size: 18px; margin-top: 20px; margin-bottom: 20px; color: white;">Music</h5>
+            </div>
+        </div>
+
+        <div style="width: 100%; display: flex; justify-content: center;">
+            <div style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; color: white; width: 50%;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-c-circle" viewBox="0 0 16 16">
+                    <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.146 4.992c-1.212 0-1.927.92-1.927 2.502v1.06c0 1.571.703 2.462 1.927 2.462.979 0 1.641-.586 1.729-1.418h1.295v.093c-.1 1.448-1.354 2.467-3.03 2.467-2.091 0-3.269-1.336-3.269-3.603V7.482c0-2.261 1.201-3.638 3.27-3.638 1.681 0 2.935 1.054 3.029 2.572v.088H9.875c-.088-.879-.768-1.512-1.729-1.512"/>
+                </svg>
+                
+                <span style="color: white; margin-left: 10px;">2025. All Rights Reserved.</span>
+            </div>                    
+        </div>
+    </footer>
 </body>
 </html>
