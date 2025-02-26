@@ -1,6 +1,6 @@
 .background {
     margin: 0;
-    background-image: url('../refs/images03/bg-body.png');
+    background-image: url('images03/bg-body.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     height: 100vh;
