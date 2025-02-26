@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    border-bottom: 2px solid black;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    margin: 0;
+}
+
+header ul li {
+    display: inline;
+}
+
+header ul li:not(:last-child)::after {
+    content: " | ";
+    margin: 0 5px;
+}
+
+.form-control {
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+main.row {
+    padding: 0;
+    margin: 0;
+}
+
+main.row .col {
+    border: 1px solid black;
+    padding: 0;
+    margin: 0;
+}
+
+main.row .col.col-3 h3 {
+    background: grey;
+    text-align: center;
+    border: 2px solid black;
+    padding: 8px;
+}
+
+main.row .col.col-3 ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+main.row .col.col-3 a {
+    text-decoration: none;
+    color: black;
+}
+
+main.row .col.col-3 .ads {
+    width: 100%; 
+    height: 600px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+main.row .col.col-3 .ads2 {
+    width: 100%; 
+    height: 100px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid black;
+}
+
+main.row .col.col-6 {
+    padding: 20px 10px;
+    margin: 0;
+}
+
+.row.main-content .col {
+    border: none;
+}
+
+.more-square {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.square {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border: 2px solid #000;
+    position: relative;
+}
+
+.more-square .square {
+    width: 24%;
+}
+
+.square::before {
+    content: '';
+    position: absolute;
+    width: calc(100% * 1.4142);
+    height: 2px;
+    background: #000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.square::after {
+    content: '';
+    position: absolute;
+    width: calc(100% * 1.4142);
+    height: 2px;
+    background: #000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.row.main-content div:nth-child(2) h2,
+.row.main-content div:nth-child(2) h4,
+.row.main-content div:nth-child(2) p {
+    font-size: 120%;
+}
+
+.description-content {
+    width: 100%;
+}
+
+.description-content h6 {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.description-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+footer {
+    width: 100%;
+    border: 1px solid black;
+}
