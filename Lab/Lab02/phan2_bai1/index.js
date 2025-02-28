@@ -7,7 +7,7 @@ function createTable() {
                         Xóa Bảng
                     </button>
 
-                    <button class="btn btn-success" style="margin-bottom: 16px;">
+                    <button id="add-col-button" class="btn btn-success">
                         Add Column
                     </button>
                 </div>
@@ -30,7 +30,7 @@ function createTable() {
                 </div>
     
                 <div class="col-2 add-row-button-container">
-                    <button class="btn btn-success">
+                    <button id="add-row-button" class="btn btn-success">
                         Add Row
                     </button>
                 </div>
@@ -38,9 +38,17 @@ function createTable() {
     
             <div class="row" style="margin-top: 1rem;">
                 <div class="col-12 input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Xóa hàng / cột</span>                    
-                    <input type="text" class="form-control" placeholder="Nhập vào chỉ số của hàng hoặc cột để xóa (chỉ số bắt đầu đếm từ 1)" aria-label="Username" aria-describedby="basic-addon1">                    
-                    <button class="btn btn-danger" type="button" id="delete-button-1">Xóa</button>
+                    <span class="input-group-text" id="basic-addon1">Xóa hàng</span>
+                    <input id="input-row" type="text" class="form-control" placeholder="Nhập vào chỉ số của hàng để xóa (chỉ số bắt đầu đếm từ 1)" aria-label="Username" aria-describedby="basic-addon1">
+                    <button class="btn btn-danger" type="button" id="delete-row-button">Xóa</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Xóa cột</span>
+                    <input id="input-col" type="text" class="form-control" placeholder="Nhập vào chỉ số của cột để xóa (chỉ số bắt đầu đếm từ 1)" aria-label="Username" aria-describedby="basic-addon1">
+                    <button class="btn btn-danger" type="button" id="delete-button">Xóa</button>
                 </div>
             </div>
         </div>
@@ -73,11 +81,150 @@ $(document).ready(function() {
 
     $("#body-container").on('click', '#add-col-button', function() {
         const tableContainer = $(this).closest('.container');
-        const table = tableContainer.find('table');                
-        const columnCount = table.find('tr:first-child td').length;                
+        const table = tableContainer.find('table');
+        const columnCount = table.find('tr:first-child td').length;
         table.find('tr').each(function() {
-            const newColumnNumber = columnCount + 1;            
+            const newColumnNumber = columnCount + 1;
             $(this).append(`<td>(${$(this).index() + 1}, ${newColumnNumber})</td>`);
         });
+    });
+
+    $("#body-container").on('click', '#delete-row-button', function() {
+        const inputGroup = $(this).closest('.input-group');
+        const input = inputGroup.find('#input-row');
+        const value = input.val().trim();
+        
+        if (!value) {
+            if($('.input-group').find('div.valid-feedback').length > 0) {
+                inputGroup.find('.valid-feedback').remove();
+                input.removeClass('is-valid');
+                input.addClass('is-invalid');
+            } else if($('.input-group').find('div.invalid-feedback').length > 0) {
+                inputGroup.find('.invalid-feedback').remove();
+            } else {
+                input.addClass('is-invalid');
+            }
+
+            inputGroup.append(
+                `<div class="invalid-feedback">
+                    Bạn Chưa Nhập Input Vào
+                </div>`
+            );
+            return;
+        }
+
+        const tableContainer = $(this).closest('.container');
+        var lastRow = tableContainer.find('table tr:last-child');
+        const firstTdText = lastRow.find('td:first-child').text();
+        const firstNumber = parseInt(firstTdText.match(/\d+/)[0]);
+        const number = parseInt(value);        
+        if (isNaN(number) || number < 1 || number > firstNumber) {
+            if($('.input-group').find('div.valid-feedback').length > 0) {
+                inputGroup.find('.valid-feedback').remove();
+                input.removeClass('is-valid');
+                input.addClass('is-invalid');
+            } else if($('.input-group').find('div.invalid-feedback').length > 0) {
+                inputGroup.find('.invalid-feedback').remove();
+            } else {
+                input.addClass('is-invalid');
+            }
+            
+            inputGroup.append(
+                `<div class="invalid-feedback">
+                    Giá trị nhập vào không hợp lệ
+                </div>`
+            );
+            return;
+        }
+
+        const hasInvalidFeedback = $('.input-group').find('div.invalid-feedback').length > 0;
+        if(hasInvalidFeedback) {
+            inputGroup.find('.invalid-feedback').remove();
+            input.removeClass('is-invalid');
+        }
+        
+        const hasValidFeedback = $('.input-group').find('div.valid-feedback').length > 0;
+        if(hasValidFeedback) {
+            return;
+        }
+
+        input.addClass('is-valid');
+        inputGroup.append(
+            `<div class="valid-feedback">
+                Số Nhập Vào Hợp Lệ
+            </div>`
+        );
+    });
+
+    $("#body-container").on('click', '#delete-col-button', function() {
+        const inputGroup = $(this).closest('.input-group');
+        const input = inputGroup.find('#input-col');
+        const value = input.val().trim();
+        
+        if (!value) {
+            if($('.input-group').find('div.valid-feedback').length > 0) {
+                inputGroup.find('.valid-feedback').remove();
+                input.removeClass('is-valid');
+                input.addClass('is-invalid');
+            } else if($('.input-group').find('div.invalid-feedback').length > 0) {
+                inputGroup.find('.invalid-feedback').remove();
+            } else {
+                input.addClass('is-invalid');
+            }
+
+            inputGroup.append(
+                `<div class="invalid-feedback">
+                    Bạn Chưa Nhập Input Vào
+                </div>`
+            );
+            return;
+        }
+
+        const tableContainer = $(this).closest('.container');
+        var lastCol = tableContainer.find('table tr:last-child');
+        const firstTdText = lastCol.find('td:first-child').text();
+        const firstNumber = parseInt(firstTdText.match(/\d+/)[0]);
+        const number = parseInt(value);        
+        if (isNaN(number) || number < 1 || number > firstNumber) {
+            if($('.input-group').find('div.valid-feedback').length > 0) {
+                inputGroup.find('.valid-feedback').remove();
+                input.removeClass('is-valid');
+                input.addClass('is-invalid');
+            } else if($('.input-group').find('div.invalid-feedback').length > 0) {
+                inputGroup.find('.invalid-feedback').remove();
+            } else {
+                input.addClass('is-invalid');
+            }
+            
+            inputGroup.append(
+                `<div class="invalid-feedback">
+                    Giá trị nhập vào không hợp lệ
+                </div>`
+            );
+            return;
+        }
+
+        const hasInvalidFeedback = $('.input-group').find('div.invalid-feedback').length > 0;
+        if(hasInvalidFeedback) {
+            inputGroup.find('.invalid-feedback').remove();
+            input.removeClass('is-invalid');
+        }
+        
+        const hasValidFeedback = $('.input-group').find('div.valid-feedback').length > 0;
+        if(hasValidFeedback) {
+            return;
+        }
+
+        input.addClass('is-valid');
+        inputGroup.append(
+            `<div class="valid-feedback">
+                Số Nhập Vào Hợp Lệ
+            </div>`
+        );
+
+        // const table = tableContainer.find('table');
+        // table.find('tr').each(function() {
+        //     $(this).find('td:eq(' + (number - 1) + ')').remove();
+        // });
     });
 });
