@@ -1,10 +1,30 @@
 .container {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+}
+
+.row {
+    width: 100%;
+}
+
+.add-col-button-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.add-col-button-container button {
+    margin-bottom: 16px;
+}
+
+.add-row-button-container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-end;
 }
 
 table th, 

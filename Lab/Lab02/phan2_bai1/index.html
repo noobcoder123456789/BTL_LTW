@@ -9,22 +9,55 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <button id="create-table" class="btn btn-primary">
+    <div id="body-container" class="container">
+        <button id="create-table" class="btn btn-success" style="margin: 20px;">
             Tạo Bảng
         </button>
 
-        <table class="table table-primary table-bordered border-primary">
-            <tr>
-                <td>(1, 1)</td>
-                <td>(1, 2)</td>
-            </tr>
+        <div id="table-1" class="container" style="min-height: auto;">
+            <div class="row">
+                <div class="col-10 add-col-button-container">
+                    <button id="delete-table" class="btn btn-danger">
+                        Xóa Bảng
+                    </button>
 
-            <tr>
-                <td>(2, 1)</td>
-                <td>(2, 2)</td>
-            </tr>
-        </table>
+                    <button id="add-col-button" class="btn btn-success">
+                        Add Column
+                    </button>
+                </div>
+                <div class="col-2"></div>
+            </div>
+    
+            <div class="row">
+                <div class="col-10">
+                    <table class="table table-primary table-bordered border-primary" style="margin: 0;">
+                        <tr>
+                            <td>(1, 1)</td>
+                            <td>(1, 2)</td>
+                        </tr>
+            
+                        <tr>
+                            <td>(2, 1)</td>
+                            <td>(2, 2)</td>
+                        </tr>
+                    </table>
+                </div>
+    
+                <div class="col-2 add-row-button-container">
+                    <button id="add-row-button" class="btn btn-success">
+                        Add Row
+                    </button>
+                </div>
+            </div>
+    
+            <div class="row" style="margin-top: 1rem;">
+                <div class="col-12 input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Xóa hàng / cột</span>                    
+                    <input id="input-row-col" type="text" class="form-control" placeholder="Nhập vào chỉ số của hàng hoặc cột để xóa (chỉ số bắt đầu đếm từ 1)" aria-label="Username" aria-describedby="basic-addon1">                    
+                    <button class="btn btn-danger" type="button" id="delete-button">Xóa</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="index.js"></script>
