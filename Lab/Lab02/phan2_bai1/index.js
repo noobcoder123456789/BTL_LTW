@@ -1,6 +1,6 @@
 function createTable() {
     var table = `
-        <div id="table" class="container" style="min-height: auto;">
+        <div id="table-${$("#body-container").find('table').length + 1}" class="container" style="min-height: auto;">
             <div class="row">
                 <div class="col-10 add-col-button-container">
                     <button id="delete-table" class="btn btn-danger">
@@ -39,16 +39,16 @@ function createTable() {
             <div class="row" style="margin-top: 1rem;">
                 <div class="col-12 input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Xóa hàng</span>
-                    <input id="input-row" type="text" class="form-control" placeholder="Nhập vào chỉ số của hàng để xóa (chỉ số bắt đầu đếm từ 1)" aria-label="Username" aria-describedby="basic-addon1">
+                    <input id="input-row" type="text" class="form-control" placeholder="Nhập vào chỉ số của hàng để xóa (chỉ số bắt đầu đếm từ 1)" aria-label="delete-row-button" aria-describedby="basic-addon1">
                     <button class="btn btn-danger" type="button" id="delete-row-button">Xóa</button>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-12 input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Xóa cột</span>
-                    <input id="input-col" type="text" class="form-control" placeholder="Nhập vào chỉ số của cột để xóa (chỉ số bắt đầu đếm từ 1)" aria-label="Username" aria-describedby="basic-addon1">
-                    <button class="btn btn-danger" type="button" id="delete-button">Xóa</button>
+                    <span class="input-group-text" id="basic-addon2">Xóa cột</span>
+                    <input id="input-col" type="text" class="form-control" placeholder="Nhập vào chỉ số của cột để xóa (chỉ số bắt đầu đếm từ 1)" aria-label="delete-col-button" aria-describedby="basic-addon2">
+                    <button class="btn btn-danger" type="button" id="delete-col-button">Xóa</button>
                 </div>
             </div>
         </div>
@@ -57,25 +57,29 @@ function createTable() {
     $('#body-container').append(table.toString());
 }
 
-function addRow() {
-
+function deleteAllTable() {
+    $("#body-container").find(".container").each(function() {
+        $(this).remove();
+    });
 }
 
 $(document).ready(function() {
     $("#create-table").click(createTable);
+    $("#delete-all-table").click(deleteAllTable);
 
     $("#body-container").on('click', '#add-row-button', function() {
         const tableContainer = $(this).closest('.container');
         const tableId = tableContainer.attr('id');
         const table = tableContainer.find('table');
         var lastRow = tableContainer.find('table tr:last-child');
-        if(table.find('tr').first().find('td').length == 0) {
-            lastRow = `<tr>
+        if(table.find('tr').length == 0) {
+            table.append(`<tr>
                             <td>(1, 1)</td>
-                            <td>(1, 2)</td>
-                        </tr>`;
-        }   
-        table.append(lastRow.clone());
+                        </tr>`);
+            return;
+        } else {
+            table.append(lastRow.clone());
+        }        
         lastRow = tableContainer.find('table tr:last-child');
         const firstTdText = lastRow.find('td:first-child').text();
         const firstNumber = parseInt(firstTdText.match(/\d+/)[0]);
@@ -89,6 +93,12 @@ $(document).ready(function() {
         const tableContainer = $(this).closest('.container');
         const table = tableContainer.find('table');
         const columnCount = table.find('tr:first-child td').length;
+        if(table.find('tr').length == 0) {
+            table.append(`<tr>
+                            <td>(1, 1)</td>
+                        </tr>`);
+            return;
+        }
         table.find('tr').each(function() {
             const newColumnNumber = columnCount + 1;
             $(this).append(`<td>(${$(this).index() + 1}, ${newColumnNumber})</td>`);
@@ -120,10 +130,10 @@ $(document).ready(function() {
         }
 
         const tableContainer = $(this).closest('.container');
-        var lastRow = tableContainer.find('table tr:last-child');
-        const firstTdText = lastRow.find('td:first-child').text();
-        const firstNumber = parseInt(firstTdText.match(/\d+/)[0]);
-        const number = parseInt(value);        
+        var table = tableContainer.find('table');
+        var lastRow = tableContainer.find('table tr');
+        const firstNumber = lastRow.length;
+        const number = parseInt(value);
         if (isNaN(number) || number < 1 || number > firstNumber) {
             if(inputGroup.find('div.valid-feedback').length > 0) {
                 inputGroup.find('.valid-feedback').remove();
@@ -151,6 +161,8 @@ $(document).ready(function() {
         
         const hasValidFeedback = inputGroup.find('div.valid-feedback').length > 0;
         if(hasValidFeedback) {
+            const rowToDelete = table.find('tr:eq(' + (number - 1) + ')');
+            rowToDelete.remove();
             return;
         }
 
@@ -160,6 +172,9 @@ $(document).ready(function() {
                 Số Nhập Vào Hợp Lệ
             </div>`
         );
+
+        const rowToDelete = table.find('tr:eq(' + (number - 1) + ')');
+        rowToDelete.remove();
     });
 
     $("#body-container").on('click', '#delete-col-button', function() {
@@ -177,7 +192,6 @@ $(document).ready(function() {
             } else {
                 input.addClass('is-invalid');
             }
-
             inputGroup.append(
                 `<div class="invalid-feedback">
                     Bạn Chưa Nhập Input Vào
@@ -185,10 +199,10 @@ $(document).ready(function() {
             );
             return;
         }
-
+    
         const tableContainer = $(this).closest('.container');
         const table = tableContainer.find('table');
-        var firstCol = table.find('tr:first-child td').length;
+        const firstCol = table.find('tr:first-child td').length;
         const number = parseInt(value);        
         if (isNaN(number) || number < 1 || number > firstCol) {
             if(inputGroup.find('div.valid-feedback').length > 0) {
@@ -200,7 +214,7 @@ $(document).ready(function() {
             } else {
                 input.addClass('is-invalid');
             }
-            
+
             inputGroup.append(
                 `<div class="invalid-feedback">
                     Giá trị nhập vào không hợp lệ
@@ -220,6 +234,10 @@ $(document).ready(function() {
             table.find('tr').each(function() {
                 $(this).find('td:eq(' + (number - 1) + ')').remove();
             });
+
+            if (table.find('td').length === 0) {
+                table.find('tr').remove();
+            }
             return;
         }
         
@@ -229,9 +247,19 @@ $(document).ready(function() {
                 Số Nhập Vào Hợp Lệ
             </div>`
         );
-        
+    
         table.find('tr').each(function() {
             $(this).find('td:eq(' + (number - 1) + ')').remove();
         });
+    
+        if (table.find('td').length === 0) {
+            table.find('tr').remove();
+        }
+    });
+
+    $("#body-container").on('click', '#delete-table', function() {
+        const tableContainer = $(this).closest('.container');
+        const tableId = tableContainer.attr('id');
+        $(`#${tableId}`).remove();
     });
 });
