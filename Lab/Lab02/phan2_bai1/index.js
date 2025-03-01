@@ -67,10 +67,16 @@ $(document).ready(function() {
     $("#body-container").on('click', '#add-row-button', function() {
         const tableContainer = $(this).closest('.container');
         const tableId = tableContainer.attr('id');
+        const table = tableContainer.find('table');
         var lastRow = tableContainer.find('table tr:last-child');
-        $(`#${tableId} table`).append(lastRow.clone());
+        if(table.find('tr').first().find('td').length == 0) {
+            lastRow = `<tr>
+                            <td>(1, 1)</td>
+                            <td>(1, 2)</td>
+                        </tr>`;
+        }   
+        table.append(lastRow.clone());
         lastRow = tableContainer.find('table tr:last-child');
-        
         const firstTdText = lastRow.find('td:first-child').text();
         const firstNumber = parseInt(firstTdText.match(/\d+/)[0]);
         lastRow.find("td").each(function(index, tdElement) {
@@ -95,11 +101,11 @@ $(document).ready(function() {
         const value = input.val().trim();
         
         if (!value) {
-            if($('.input-group').find('div.valid-feedback').length > 0) {
+            if(inputGroup.find('div.valid-feedback').length > 0) {
                 inputGroup.find('.valid-feedback').remove();
                 input.removeClass('is-valid');
                 input.addClass('is-invalid');
-            } else if($('.input-group').find('div.invalid-feedback').length > 0) {
+            } else if(inputGroup.find('div.invalid-feedback').length > 0) {
                 inputGroup.find('.invalid-feedback').remove();
             } else {
                 input.addClass('is-invalid');
@@ -119,11 +125,11 @@ $(document).ready(function() {
         const firstNumber = parseInt(firstTdText.match(/\d+/)[0]);
         const number = parseInt(value);        
         if (isNaN(number) || number < 1 || number > firstNumber) {
-            if($('.input-group').find('div.valid-feedback').length > 0) {
+            if(inputGroup.find('div.valid-feedback').length > 0) {
                 inputGroup.find('.valid-feedback').remove();
                 input.removeClass('is-valid');
                 input.addClass('is-invalid');
-            } else if($('.input-group').find('div.invalid-feedback').length > 0) {
+            } else if(inputGroup.find('div.invalid-feedback').length > 0) {
                 inputGroup.find('.invalid-feedback').remove();
             } else {
                 input.addClass('is-invalid');
@@ -137,13 +143,13 @@ $(document).ready(function() {
             return;
         }
 
-        const hasInvalidFeedback = $('.input-group').find('div.invalid-feedback').length > 0;
+        const hasInvalidFeedback = inputGroup.find('div.invalid-feedback').length > 0;
         if(hasInvalidFeedback) {
             inputGroup.find('.invalid-feedback').remove();
             input.removeClass('is-invalid');
         }
         
-        const hasValidFeedback = $('.input-group').find('div.valid-feedback').length > 0;
+        const hasValidFeedback = inputGroup.find('div.valid-feedback').length > 0;
         if(hasValidFeedback) {
             return;
         }
@@ -162,11 +168,11 @@ $(document).ready(function() {
         const value = input.val().trim();
         
         if (!value) {
-            if($('.input-group').find('div.valid-feedback').length > 0) {
+            if(inputGroup.find('div.valid-feedback').length > 0) {
                 inputGroup.find('.valid-feedback').remove();
                 input.removeClass('is-valid');
                 input.addClass('is-invalid');
-            } else if($('.input-group').find('div.invalid-feedback').length > 0) {
+            } else if(inputGroup.find('div.invalid-feedback').length > 0) {
                 inputGroup.find('.invalid-feedback').remove();
             } else {
                 input.addClass('is-invalid');
@@ -181,16 +187,15 @@ $(document).ready(function() {
         }
 
         const tableContainer = $(this).closest('.container');
-        var lastCol = tableContainer.find('table tr:last-child');
-        const firstTdText = lastCol.find('td:first-child').text();
-        const firstNumber = parseInt(firstTdText.match(/\d+/)[0]);
+        const table = tableContainer.find('table');
+        var firstCol = table.find('tr:first-child td').length;
         const number = parseInt(value);        
-        if (isNaN(number) || number < 1 || number > firstNumber) {
-            if($('.input-group').find('div.valid-feedback').length > 0) {
+        if (isNaN(number) || number < 1 || number > firstCol) {
+            if(inputGroup.find('div.valid-feedback').length > 0) {
                 inputGroup.find('.valid-feedback').remove();
                 input.removeClass('is-valid');
                 input.addClass('is-invalid');
-            } else if($('.input-group').find('div.invalid-feedback').length > 0) {
+            } else if(inputGroup.find('div.invalid-feedback').length > 0) {
                 inputGroup.find('.invalid-feedback').remove();
             } else {
                 input.addClass('is-invalid');
@@ -204,27 +209,29 @@ $(document).ready(function() {
             return;
         }
 
-        const hasInvalidFeedback = $('.input-group').find('div.invalid-feedback').length > 0;
+        const hasInvalidFeedback = inputGroup.find('div.invalid-feedback').length > 0;
         if(hasInvalidFeedback) {
             inputGroup.find('.invalid-feedback').remove();
             input.removeClass('is-invalid');
         }
-        
-        const hasValidFeedback = $('.input-group').find('div.valid-feedback').length > 0;
+                
+        const hasValidFeedback = inputGroup.find('div.valid-feedback').length > 0;
         if(hasValidFeedback) {
+            table.find('tr').each(function() {
+                $(this).find('td:eq(' + (number - 1) + ')').remove();
+            });
             return;
         }
-
+        
         input.addClass('is-valid');
         inputGroup.append(
             `<div class="valid-feedback">
                 Số Nhập Vào Hợp Lệ
             </div>`
         );
-
-        // const table = tableContainer.find('table');
-        // table.find('tr').each(function() {
-        //     $(this).find('td:eq(' + (number - 1) + ')').remove();
-        // });
+        
+        table.find('tr').each(function() {
+            $(this).find('td:eq(' + (number - 1) + ')').remove();
+        });
     });
 });
