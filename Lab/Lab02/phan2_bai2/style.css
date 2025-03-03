@@ -8,19 +8,19 @@ body {
 }
 
 #calculator-container {
-    width: 30vw;
-    height: 90vh;
+    width: 20vw;
+    height: auto;
     background-color: rgb(80, 79, 79);
     border-radius: 20px;
     border: 2px solid rgb(102, 102, 102);
-    padding: 20px;
+    padding: 10px;
 }
 
 #calculator-container input {
     background-color: black;
     border-radius: 20px;
     width: 100%;
-    height: 20vh;
+    height: 15vh;
     border: 0;
     text-align: right;
     color: white;
@@ -28,15 +28,55 @@ body {
 }
 
 .button-container {
-    display: flex;
+    /* display: flex;
     flex-flow: row wrap;
-    justify-content: flex-start;
-    flex-grow: 1;
+    justify-content: space-between; */
+    /* align-content: center; */
+    /* flex-grow: 1; */
     margin-top: 20px;
     width: 100%;
+    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.btn {
+    font-size: 200%;
+    color: white;
+    background-color: grey;
+    flex-grow: 1;
+    font-weight: bold;
+    transition: all 0.3 ease;    
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 245, 212, 0.2);    
+    animation: btnHover;
+    animation-duration: 1s;
+}
+
+@keyframes btnHover {
+    from {
+        background-color: grey;
+    }
+
+    to {
+        background-color: rgb(149, 21, 21);
+        color: white;
+    }
+}
+
+.btn:active {
+    transform: translateX(0px);
 }
 
 .btn.btn-purple {
     color: rgb(90, 0, 128);
     background-color: rgba(174, 71, 211, 0.3);
+}
+
+.btn.btn-aqua {
+    background-color: aqua;
+    color: black;
 }
