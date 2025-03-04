@@ -29,19 +29,22 @@ function birthdateCheck() {
         $("#month-birth").val() === "m" || 
         $("#date-birth").val() === "d" || 
         $("#year-birth").val() === "y" || 
-        !isValidDate($("#year-birth").val(), $("#month-birth").val(), $("#date-birth").val() === "d")
+        !isValidDate($("#year-birth").val(), $("#month-birth").val(), $("#date-birth").val())
     ) {
         $("#month-birth").addClass("is-invalid");
+        $("#month-birth").removeClass("is-valid");
         $('label[for="month-birth"]').css({
             "color": "red"
         });
 
         $("#date-birth").addClass("is-invalid");
+        $("#date-birth").removeClass("is-valid");
         $('label[for="date-birth"]').css({
             "color": "red"
         });
 
         $("#year-birth").addClass("is-invalid");
+        $("#year-birth").removeClass("is-valid");
         $('label[for="year-birth"]').css({
             "color": "red"
         });
@@ -78,46 +81,55 @@ function reset() {
     $("#about").val("");
 
     $("#month-birth").removeClass("is-invalid");
+    $("#month-birth").removeClass("is-valid");
     $('label[for="month-birth"]').css({
         "color": "grey"
     });
 
     $("#date-birth").removeClass("is-invalid");
+    $("#date-birth").removeClass("is-valid");
     $('label[for="date-birth"]').css({
         "color": "grey"
     });
 
     $("#year-birth").removeClass("is-invalid");
+    $("#year-birth").removeClass("is-valid");
     $('label[for="year-birth"]').css({
         "color": "grey"
     });
 
     $("#first-name").removeClass("is-invalid");
+    $("#first-name").removeClass("is-valid");
     $('label[for="first-name"]').css({
         "color": "grey"
     });
 
     $("#last-name").removeClass("is-invalid");
+    $("#last-name").removeClass("is-valid");
     $('label[for="last-name"]').css({
         "color": "grey"
     });
 
     $("#email").removeClass("is-invalid");
+    $("#email").removeClass("is-valid");
     $('label[for="email"]').css({
         "color": "grey"
     });
 
     $("#password").removeClass("is-invalid");
+    $("#password").removeClass("is-valid");
     $('label[for="password"]').css({
         "color": "grey"
     });
 
     $("#confirm-password").removeClass("is-invalid");
+    $("#confirm-password").removeClass("is-valid");
     $('label[for="confirm-password"]').css({
         "color": "grey"
     });
 
     $("#about").removeClass("is-invalid");
+    $("#about").removeClass("is-valid");
     $('label[for="about"]').css({
         "color": "grey"
     });
@@ -128,8 +140,17 @@ function isValidEmail(email) {
     return emailPattern.test(email);
 }
 
-function checkComplete() {
-
+function checkComplete() {    
+    var inputs = document.querySelectorAll('input');
+        
+    for (var i = 0; i < inputs.length; i++) {        
+        if (inputs[i].value.trim() === '') {
+            alert("Please enter complete and correct data!");
+            return;
+        }                
+    }
+        
+    alert("Complete!");
 }
 
 $(document).ready(function() {
