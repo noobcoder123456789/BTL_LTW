@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 40px;
+    width: 50%;
+}
+
+.container > h6 {
+    font-weight: 400;
+}
+
+#name-container {
+    width: 100%;
+}
+
+#name-container input {
+    width: 50%;
+}
