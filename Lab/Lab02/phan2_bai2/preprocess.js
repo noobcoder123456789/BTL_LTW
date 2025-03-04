@@ -100,38 +100,53 @@ buttons.forEach((button) => {
         }
 
         if(value === '=') {
-            let isOp = false;
-            let ans = 0;
-            let first = true;
-            let op = NaN;
-            
-            while(!st.empty()) {                
-                let temp = st.front(); st.pop_front();
-                
-                if(isOperation(temp)) {
-                    op = temp;
-                    isOp = true;
-                    continue;
-                }
+            const outputQueue = [];
+            const operatorStack = [];
+            const precedence = {
+                '^': 4,
+                'x': 3,
+                '/': 3,
+                '%': 3,
+                '+': 2,
+                '-': 2
+            };
 
-                isOp = false;
-                if(first) {
-                    ans += parseNum(temp);
-                    first = false;
-                    continue;
-                }
-                
-                ans = cal(ans, op, temp);
-            }
+            const tokens = currExpr.match(/(\d+\.?\d*|\+|\-|\x|\/|\%|\^)/g) || [];
             
-            if(isOp) {
-                ans = cal(ans, op, ans);
+            tokens.forEach(token => {
+                if (/\d/.test(token)) {
+                    outputQueue.push(token);
+                } else if (isOperation(token)) {
+                    while (operatorStack.length > 0 && 
+                        precedence[token] <= precedence[operatorStack[operatorStack.length - 1]]) {
+                        outputQueue.push(operatorStack.pop());
+                    }
+                    operatorStack.push(token);
+                }
+            });
+
+            while (operatorStack.length > 0) {
+                outputQueue.push(operatorStack.pop());
             }
 
-            st.push_back(ans);
-            currExpr = ans;
-            displayExpression.value = ans;
+            const evalStack = [];
+            outputQueue.forEach(token => {
+                if (/\d/.test(token)) {
+                    evalStack.push(parseFloat(token));
+                } else {
+                    const b = evalStack.pop();
+                    const a = evalStack.pop();
+                    evalStack.push(cal(a, token, b));
+                }
+            });
+
+            const result = evalStack.pop();
+            currVal = result;
+            currExpr = result.toString();
+            st = new deque();
+            st.push_back(result.toString());            
             displayCurrentValue.value = '';
+            displayExpression.value = result;
             return;
         }        
         
