@@ -1,26 +1,26 @@
-class stack {
+class queue {
     constructor() {
-        this.stack = [];
+        this.queue = [];
     }
 
     push(ele) {
-        this.stack.push(ele);
+        this.queue.push(ele);
     }
 
     pop() {
-        this.stack.pop();
+        this.queue.pop();
     }
 
     size() {
-        return this.stack.length;
+        return this.queue.length;
     }
 
     empty() {
         return this.size() == 0;
     }
 
-    top() {
-        return this.stack[this.stack.length - 1];
+    front() {
+        return this.queue[this.queue.length - 1];
     }
 }
 
@@ -30,12 +30,51 @@ const buttons = document.querySelectorAll('.btn');
 
 let currExpr = "";
 let currVal = "";
-let st = new stack();
+let st = new queue();
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         function isOperation(op) {
             return op === '+' || op === '-' || op === 'x' || op === '/' || op === '%' || op === '^';
+        }
+
+        function isInt(n){
+            return Number(n) === n && n % 1 === 0;
+        }
+        
+        function isFloat(n){
+            return Number(n) === n && n % 1 !== 0;
+        }
+
+        function cal(val1, op, val2) {
+            val1 = val1.toString().includes('.') ? parseFloat(val1) : parseInt(val1);
+            val2 = val2.toString().includes('.') ? parseFloat(val2) : parseInt(val2);
+
+            if(op === '+') {
+                return val1 + val2;
+            }
+
+            if(op === '-') {
+                return val1 - val2;
+            }
+
+            if(op === 'x') {
+                return val1 * val2;
+            }
+
+            if(op === '/') {                
+                return (val2 == 0) ? 'Result not determined' : val1 / val2;
+            }
+
+            if(op === '%') {
+                return (isFloat(val1) || isFloat(val2)) ? 'Error Type' : val1 % val2;
+            }
+
+            return Math.pow(val1, val2);
+        }
+
+        function parseNum(val) {
+            return val.includes('.') ? parseFloat(val) : parseInt(val);
         }
 
         const value = button.textContent.trim();
@@ -50,14 +89,34 @@ buttons.forEach((button) => {
 
         if(value === '=') {
             let isOp = false;
-            for(; !st.empty(); st.pop()) {
-                let temp = st.top(); 
+            let ans = 0;
+            let first = true;
+            let op = NaN;
+
+            while(!st.empty()) {
+                let temp = st.front(); st.pop();
                 
                 if(isOperation(temp)) {
+                    op = temp;
                     isOp = true;
+                    continue;
                 }
+
+                isOp = false;
+                if(first) {
+                    ans = parseNum(temp);
+                    first = false;
+                    continue;
+                }
+
+                ans = cal(parseNum(temp), op, ans);
             }
 
+            if(isOp) {
+                ans
+            }
+            st.push(ans);
+            displayCurrentValue.value = ans;
             return;
         }        
         
@@ -69,14 +128,14 @@ buttons.forEach((button) => {
                 return;
             }
 
-            if(isOperation(st.top())) {
+            if(isOperation(st.front())) {
                 st.pop();
-                currExpr = currExpr.substring(0, currExpr.length - 1);
-                currExpr += value;
+                currExpr = currExpr.slice(0, -1);                
             }
 
             st.push(value);
             currVal = "";
+            currExpr += value;
             displayExpression.value = currExpr;
             return;
         }
@@ -85,10 +144,10 @@ buttons.forEach((button) => {
         currExpr += value;
         displayCurrentValue.value = currVal;
         displayExpression.value = currExpr;
-        if(st.empty() || isOperation(st.top())) {
+        if(st.empty() || isOperation(st.front())) {
             st.push(currVal);
         } else {
-            let temp = st.top();
+            let temp = st.front();
             st.pop();
 
             st.push(temp + value + value);
