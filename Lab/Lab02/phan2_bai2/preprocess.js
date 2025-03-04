@@ -1,26 +1,38 @@
-class queue {
+class deque {
     constructor() {
-        this.queue = [];
+        this.deque = [];
     }
 
-    push(ele) {
-        this.queue.push(ele);
+    push_back(ele) {
+        this.deque.push(ele);
     }
 
-    pop() {
-        this.queue.pop();
+    push_front(ele) {
+        this.deque.unshift(ele);
+    }
+
+    pop_front() {
+        this.deque.shift();
+    }
+
+    pop_back() {
+        this.deque.pop();
     }
 
     size() {
-        return this.queue.length;
+        return this.deque.length;
     }
 
     empty() {
-        return this.size() == 0;
+        return this.deque.length === 0;
     }
 
     front() {
-        return this.queue[this.queue.length - 1];
+        return this.deque[0];
+    }
+
+    back() {
+        return this.deque[this.deque.length - 1];
     }
 }
 
@@ -30,7 +42,7 @@ const buttons = document.querySelectorAll('.btn');
 
 let currExpr = "";
 let currVal = "";
-let st = new queue();
+let st = new deque();
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -38,12 +50,12 @@ buttons.forEach((button) => {
             return op === '+' || op === '-' || op === 'x' || op === '/' || op === '%' || op === '^';
         }
 
-        function isInt(n){
-            return Number(n) === n && n % 1 === 0;
+        function isInt(n) {
+            return Number.isInteger(Number(n));
         }
         
-        function isFloat(n){
-            return Number(n) === n && n % 1 !== 0;
+        function isFloat(n) {
+            return !isNaN(n) && !Number.isInteger(Number(n));
         }
 
         function cal(val1, op, val2) {
@@ -74,14 +86,14 @@ buttons.forEach((button) => {
         }
 
         function parseNum(val) {
-            return val.includes('.') ? parseFloat(val) : parseInt(val);
+            return val.toString().includes('.') ? parseFloat(val) : parseInt(val);
         }
 
         const value = button.textContent.trim();
 
         if(value === 'AC') {
             currExpr = currVal = "";
-            st = new stack();
+            st = new deque();
             displayExpression.value = '';
             displayCurrentValue.value = '0';
             return;
@@ -92,9 +104,9 @@ buttons.forEach((button) => {
             let ans = 0;
             let first = true;
             let op = NaN;
-
-            while(!st.empty()) {
-                let temp = st.front(); st.pop();
+            
+            while(!st.empty()) {                
+                let temp = st.front(); st.pop_front();
                 
                 if(isOperation(temp)) {
                     op = temp;
@@ -104,36 +116,39 @@ buttons.forEach((button) => {
 
                 isOp = false;
                 if(first) {
-                    ans = parseNum(temp);
+                    ans += parseNum(temp);
                     first = false;
                     continue;
                 }
-
-                ans = cal(parseNum(temp), op, ans);
+                
+                ans = cal(ans, op, temp);
             }
-
+            
             if(isOp) {
-                ans
+                ans = cal(ans, op, ans);
             }
-            st.push(ans);
-            displayCurrentValue.value = ans;
+
+            st.push_back(ans);
+            currExpr = ans;
+            displayExpression.value = ans;
+            displayCurrentValue.value = '';
             return;
         }        
         
         if(isOperation(value)) {
             if(st.empty()) {
-                st.push('0');
-                st.push(value);
+                st.push_back('0');
+                st.push_back(value);
                 currExpr = '0' + value;
                 return;
             }
 
-            if(isOperation(st.front())) {
-                st.pop();
-                currExpr = currExpr.slice(0, -1);                
+            if(isOperation(st.back())) {
+                st.pop_back();
+                currExpr = currExpr.slice(0, -1);
             }
 
-            st.push(value);
+            st.push_back(value);
             currVal = "";
             currExpr += value;
             displayExpression.value = currExpr;
@@ -144,13 +159,11 @@ buttons.forEach((button) => {
         currExpr += value;
         displayCurrentValue.value = currVal;
         displayExpression.value = currExpr;
-        if(st.empty() || isOperation(st.front())) {
-            st.push(currVal);
+        if(st.empty() || isOperation(st.back())) {
+            st.push_back(currVal);
         } else {
-            let temp = st.front();
-            st.pop();
-
-            st.push(temp + value + value);
+            let temp = st.back(); st.pop_back();
+            st.push_back(temp.toString() + value);
         }
 
         displayExpression.scrollLeft = displayExpression.scrollWidth;
