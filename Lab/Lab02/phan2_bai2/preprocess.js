@@ -186,3 +186,20 @@ buttons.forEach((button) => {
 });
 
 displayExpression.scrollLeft = displayExpression.scrollWidth;
+
+document.addEventListener('keydown', (event) => {
+    let key = event.key;
+    
+    if (key === '*') {
+        key = 'x';
+    } else if (key === 'Enter') {
+        key = '=';
+    } else if (key === 'Escape') {
+        key = 'AC';
+    }
+    
+    const button = Array.from(document.querySelectorAll('.btn')).find(btn => btn.textContent.trim() === key);
+    if (button) {
+        button.click();
+    }
+});
