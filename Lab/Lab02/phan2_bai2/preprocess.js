@@ -110,7 +110,7 @@ buttons.forEach((button) => {
                 '+': 2,
                 '-': 2
             };
-
+            
             const tokens = currExpr.match(/(\d+\.?\d*|\+|\-|\x|\/|\%|\^)/g) || [];
             
             tokens.forEach(token => {
@@ -124,11 +124,11 @@ buttons.forEach((button) => {
                     operatorStack.push(token);
                 }
             });
-
+            
             while (operatorStack.length > 0) {
                 outputQueue.push(operatorStack.pop());
             }
-
+            
             const evalStack = [];
             outputQueue.forEach(token => {
                 if (/\d/.test(token)) {
