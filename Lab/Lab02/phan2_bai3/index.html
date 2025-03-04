@@ -113,6 +113,14 @@
                         <option value="12">December</option>
                     </select>
                     <label for="month-birth">Month</label>
+                    <div id="invalid-month-birth" class="invalid-feedback">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                        </svg>
+                        
+                        <span>Enter a valid birthday.</span>
+                    </div>
                 </div>
             </div>
 
@@ -140,7 +148,7 @@
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="email" placeholder="name@example.com">
                     <label for="email">name@example.com</label>
-                    <div id="invalid-first-name" class="invalid-feedback">
+                    <div id="invalid-email" class="invalid-feedback">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                             <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
@@ -158,13 +166,13 @@
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="password" placeholder="********">
                     <label for="password">Password</label>
-                    <div id="invalid-first-name" class="invalid-feedback">
+                    <div id="invalid-password" class="invalid-feedback">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                             <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
                         </svg>
                         
-                        <span>8 or more characters</span>
+                        <span>8 or more characters.</span>
                     </div>
                 </div>
             </div>
@@ -175,7 +183,7 @@
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="confirm-password" placeholder="********">
                     <label for="confirm-password">Confirm Password</label>
-                    <div id="invalid-first-name" class="invalid-feedback">
+                    <div id="invalid-confirm-password" class="invalid-feedback">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                             <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
@@ -192,7 +200,7 @@
                 <div class="form-floating">
                     <textarea class="form-control" placeholder="Leave a comment here" id="about" style="height: 100px"></textarea>
                     <label for="about">About</label>
-                    <div id="invalid-first-name" class="invalid-feedback">
+                    <div id="invalid-about" class="invalid-feedback">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                             <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
@@ -216,13 +224,13 @@
 
         <div class="row" style="margin-top: 20px;">
             <div class="col-6">
-                <button class="btn btn-danger">
+                <button id="reset-button" class="btn btn-danger">
                     Reset
                 </button>
             </div>
 
             <div class="col-6">
-                <button class="btn btn-primary">
+                <button id="submit-button" type="submit" class="btn btn-primary">
                     Submit
                 </button>
             </div>
