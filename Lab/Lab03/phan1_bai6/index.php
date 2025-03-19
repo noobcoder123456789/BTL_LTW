@@ -179,7 +179,7 @@
     
             <div class="row" style="margin-top: 20px;">
                 <div class="col-6">
-                    <button id="reset-button" class="btn btn-danger">
+                    <button id="reset-button" class="btn btn-danger" onclick="reset(event)" type="button">
                         Reset
                     </button>
                 </div>
@@ -268,5 +268,20 @@
             }
         }
     ?>
+
+    <script>
+        function reset(e) {
+            e.preventDefault();
+            $("#first-name").val("");
+            $("#last-name").val("");
+            $("#month-birth").val("m");
+            $("#date-birth").val("d");
+            $("#year-birth").val("y");
+            $("#email").val("");
+            $("#password").val("");
+            $("#confirm-password").val("");
+            $("#about").val("");
+        }
+    </script>
 </body>
 </html>
