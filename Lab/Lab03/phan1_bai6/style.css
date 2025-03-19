@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 40px;
+    width: 60%;
+}
+
+.container > h6 {
+    font-weight: 400;
+    width: 100%;
+    text-align: center;
+}
+
+.container .row {
+    width: 80%;
+}
+
+.form-floating.mb-3 input,
+.row select,
+.form-floating textarea {
+    border-radius: 15px;
+    border: 1px solid grey;
+}
+
+.form-floating label {
+    color: grey;
+}
+
+.row .col-6 button {
+    width: 100%;
+    font-size: 120%;
+}
+
+.is-invalid {
+    border: 1px solid red !important;
+}
+
+.is-valid {
+    border: 1px solid green !important;
+}
