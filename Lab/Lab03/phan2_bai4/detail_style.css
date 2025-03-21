@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.row {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body > .row > .col-5 {
+    height: 100vh;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+}
+
+body > .row > .col-5 > .container > .row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+body > .row > .col-5 > .container > .row > .col-3 {
+    background-color: rgba(241,241,249,255);
+    border-radius: 20px;
+    box-shadow: 0 10px 5px rgba(0,0,0,0.1);
+}
+
+body > .row > .col-5 > .container > .row > .col-3:hover {
+    transform: translateY(-10px);
+    transition: transform 0.3s;
+}
+
+.cropped {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+}
+
+.cropped.left {
+    object-position: left;
+}
+
+.cropped.center {
+    object-position: center;
+}
+
+.cropped.right {
+    object-position: right;
+}
+
+body > .row > .col-7 {
+    padding: 1rem 2rem;
+    background-color: rgba(241,241,249,255);
+    height: 100vh;
+}
+
+.row > .col-7 > .row > .col-10 {
+    display: flex;
+    align-items: center;
+}
+
+.row > .col-7 > .row ul {    
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin: 0;
+    width: 100%;
+    padding-left: 0;
+}
+
+.row > .col-7 > .row ul a {
+    text-decoration: none;
+    color: black;   
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.row > .col-2 {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.row > .col-2 i {
+    font-size: 150%;
+}
+
+body > .row > .col-7 > .row:nth-child(2) {
+    height: 80vh;
+    margin-top: 5rem;
+}
+
+body > .row > .col-7 > .row > .col-12 h2, 
+body > .row > .col-7 > .row > .col-12 h4 {
+    font-weight: bold;
+}
+
+body > .row > .col-7 > .row > .col-12 p {
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+#buy-now {
+    border: 4px solid black;
+    font-size: 2rem;
+    justify-content: center;
+    padding: 0;
+    color: black;
+}
+
+#buy-now:hover {
+    background-color: black;
+    color: white;
+}
+
+#add-basket {
+    font-size: 2rem;
+    justify-content: center;
+    padding: 0;
+    color: white;
+    background-color: black;
+}
+
+#add-basket:hover {
+    background-color: white;
+    color: black;
+}
