@@ -40,10 +40,17 @@ var tableContainer = (
             {
                 productsData.slice().reverse().map((product) => {
                     return (
-                        <tr>
+                        <tr key={product.id}>
                             <th scope="row">{product.id}</th>
                             <td style={{width: "10rem"}}>{product.name}</td>
-                            <td style={{width: "40rem"}}>{product.description}</td>
+                            <td style={{
+                                width: "40rem"
+                            }}>
+                                {product.description}
+                                <span id={"pencil-product-" + product.id} style={{float: "right"}}>
+                                    <i class="bi bi-pencil"></i>
+                                </span>
+                            </td>
                             <td>{product.price.toLocaleString('vi-VN') + 'đ'}</td>
                             <td>
                                 <a className="btn btn-info">Read</a>

@@ -24,8 +24,10 @@ function handleSubmit(event) {
         },
         body: JSON.stringify(data)
     }).then(data => {
-        alert('Thêm sản phẩm thành công!');
+        alert(data.message || 'Thêm sản phẩm thành công!');
         window.location.href = baseURL + 'index.php';
+    }).catch(error => {
+        alert(error.message || 'Có lỗi xảy ra khi thêm sản phẩm!');
     });
 }
 
