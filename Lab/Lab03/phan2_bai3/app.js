@@ -47,9 +47,6 @@ var tableContainer = (
                                 width: "40rem"
                             }}>
                                 {product.description}
-                                <span id={"pencil-product-" + product.id} style={{float: "right"}}>
-                                    <i class="bi bi-pencil"></i>
-                                </span>
                             </td>
                             <td>{product.price.toLocaleString('vi-VN') + 'đ'}</td>
                             <td>
