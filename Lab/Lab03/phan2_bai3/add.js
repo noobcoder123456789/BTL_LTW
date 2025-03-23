@@ -11,6 +11,11 @@ function handleSubmit(event) {
     const price = document.getElementById('price').value;
     const description = document.getElementById('description').value;
 
+    if (!/^\d+(\.\d+)?$/.test(price)) {
+        alert("Giá phải là số (ví dụ: 100000 hoặc 123.45)");
+        return;
+    }
+
     const data = {
         name: name,
         description: description,
@@ -25,7 +30,7 @@ function handleSubmit(event) {
         body: JSON.stringify(data)
     }).then(data => {
         alert(data.message || 'Thêm sản phẩm thành công!');
-        window.location.href = baseURL + 'index.php';
+        window.location.href = baseURL + 'a.php';
     }).catch(error => {
         alert(error.message || 'Có lỗi xảy ra khi thêm sản phẩm!');
     });
@@ -40,7 +45,7 @@ var mainContent = (
                 <div className="col-3"></div>
                 <div className="col-6">
                     <div className="form-floating mb-3">
-                        <input type="text" className="form-control" id="name" placeholder="Name" />
+                        <input type="text" className="form-control" id="name" placeholder="Name" required/>
                         <label htmlFor="name">Product Name</label>
                     </div>
 

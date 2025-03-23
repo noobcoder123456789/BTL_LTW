@@ -50,9 +50,9 @@ var tableContainer = (
                             </td>
                             <td>{product.price.toLocaleString('vi-VN') + 'đ'}</td>
                             <td>
-                                <a className="btn btn-info">Read</a>
-                                <a className="btn btn-primary">Edit</a>
-                                <a className="btn btn-danger">Delete</a>
+                                <a href="" className="btn btn-info">Read</a>
+                                <a href={"c.php?id=" + product.id} className="btn btn-primary">Edit</a>
+                                <a href={"d.php?id=" + product.id} className="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     );
