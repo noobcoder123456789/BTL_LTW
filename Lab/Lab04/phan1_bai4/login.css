@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(rgba(255, 186, 82, 0.7), rgba(255, 255, 255, 0.7)), url('background.png') no-repeat fixed left/cover;
+    background-size: 40% auto;
+}
+
+.overlay {
+    backdrop-filter: blur(4px);
+    z-index: -1;
+}
+
+.row {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 40px;
+    margin: 0;
+    transform: scale(0.8);
+}
+
+.row .row {
+    padding: 1rem;
+}
+
+.logo {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+h2 {
+    text-align: center;
+    font-size: 4rem;
+}
+
+.col-5 {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+a {
+    text-decoration: none;
+}
+
+#forgot-p {
+    color: rgb(235, 129, 0);
+    font-weight: bold;
+    text-align: right;
+}
+
+#register-a {
+    color: rgb(235, 129, 0);
+    font-weight: bold;
+}
+
+.col-7 {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.btn.btn-warning {
+    width: 100%;
+    color: white;
+    font-weight: bold;
+}
+
+#continue-p {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.btn.btn-light {
+    width: 8rem;
+    border-radius: 99999px;
+}
