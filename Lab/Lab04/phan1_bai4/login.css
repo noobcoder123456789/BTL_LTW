@@ -37,7 +37,7 @@ h2 {
     font-size: 4rem;
 }
 
-.col-5 {
+.col-6:nth-child(1) {
     display: flex;
     flex-flow: row nowrap;
 }
@@ -57,7 +57,7 @@ a {
     font-weight: bold;
 }
 
-.col-7 {
+.col-6:nth-child(2) {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
@@ -79,4 +79,18 @@ a {
 .btn.btn-light {
     width: 8rem;
     border-radius: 99999px;
+}
+
+#small-screen {
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    #small-screen {
+        display: inline;
+    }
+
+    #big-screen {
+        display: none;
+    }
 }
