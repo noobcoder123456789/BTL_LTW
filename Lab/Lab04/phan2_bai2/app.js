@@ -1,0 +1,74 @@
+const { createRoot } = ReactDOM;
+
+const container = document.getElementById('app');
+const root = createRoot(container);
+const baseURL = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/');
+const apiURL = baseURL + 'server.php';
+
+var productsData = (() => {
+    const request = new XMLHttpRequest();
+    request.open('GET', apiURL, false);
+    request.send();
+    return request.status === 200 ? JSON.parse(request.responseText) : [];
+})();
+
+var title = (
+    <h1>
+        Read Products
+    </h1>
+);
+
+var createNewProductButton = (
+    <a className="btn btn-primary" href='./b.php'>
+        Create New Product
+    </a>
+);
+
+var tableContainer = (
+    <table className="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col" className="text-break">Image</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {
+                productsData.slice().reverse().map((product) => {
+                    return (
+                        <tr key={product.id}>
+                            <th scope="row">{product.id}</th>
+                            <td style={{width: "10rem"}}>{product.name}</td>
+                            <td style={{width: "30rem"}}>{product.description}</td>
+                            <td>{product.price.toLocaleString('vi-VN') + 'đ'}</td>
+                            <td className="text-break">{product.image}</td>
+                            <td style={{width: "17rem"}}>
+                                <a href="" className="btn btn-info">Read</a>
+                                <a href={"c.php?id=" + product.id} className="btn btn-primary">Edit</a>
+                                <a href={"d.php?id=" + product.id} className="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    );
+                })
+            }
+        </tbody>
+    </table>
+);
+
+var divMain = (
+    <div className="container" style={{
+        marginTop: "2rem"
+    }}>
+        {title}
+        <hr/>
+        {createNewProductButton}
+        {tableContainer} 
+    </div>
+);
+
+root.render(divMain);
