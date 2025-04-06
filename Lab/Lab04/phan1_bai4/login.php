@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST") {
         $token = bin2hex(random_bytes(16));
         $_SESSION['remember'] = $token;
         $_SESSION['email'] = $email;
-        if($remember_me) {            
+        if($remember_me) {
             setcookie("remember", $token, time() + 600);
             setcookie("email", $email, time() + 600);            
         }
