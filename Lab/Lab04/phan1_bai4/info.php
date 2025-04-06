@@ -1,3 +1,32 @@
+<?php
+$information = array(
+    "admin@hcmut.edu.vn" => array(
+        "name" => "Harry Potter",
+        "phone" => "0901234567",
+        "birthday" => "31/07/1980",
+        "gender" => "Male",
+        "career" => "Software Engineer",
+        "img" => "harry.png"
+    ),
+    "root@hcmut.edu.vn" => array(
+        "name" => "Hermione Granger",
+        "phone" => "0907654321",
+        "birthday" => "19/09/1979",
+        "gender" => "Female",
+        "career" => "Data Scientist",
+        "img" => "hermione.png"
+    )
+);
+
+session_start();
+if(!(isset($_SESSION['remember']) || isset($_COOKIE['remember']))) {
+    header("Location: login.php");
+    exit();
+}
+
+$email = $_COOKIE['email'] ?? $_SESSION['email'] ?? null;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,15 +38,16 @@
     <title>Account Profile</title>
 </head>
 <body>
-    <div class="container" style="margin-top: 2rem;">
+    <form action="logout.php" method="GET" class="container" style="margin-top: 2rem;">
+        <button class="btn btn-danger float-end" type="submit">Logout</button>
         <h1>Account Profile</h1>
         <p>A page where users can change profile information</p>
 
         <div class="row">
             <div class="col-4">
-                <img src="https://zuramai.github.io/mazer/demo/assets/compiled/jpg/2.jpg" id="avatar" alt="">
-                <h2>Harry Potter</h2>
-                <h5>Junior Software Engineer</h5>
+                <img src="<?= $information[$email]['img']?>" id="avatar" alt="">
+                <h2><?= $information[$email]['name']?></h2>
+                <h5><?= $information[$email]['career']?></h5>
             </div>
 
             <div class="col-1"></div>
@@ -26,34 +56,33 @@
                 <div class="row">
                     <div class="col-12 mb-3">
                         <label for="user-name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="user-name" placeholder="User's Name">
+                        <input type="text" class="form-control" id="user-name" placeholder="User's Name" value="<?= $information[$email]['name']?>">
                     </div>
 
                     <div class="col-12 mb-3">
                         <label for="user-email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="user-email" placeholder="name@example.com">
+                        <input type="email" class="form-control" id="user-email" placeholder="name@example.com" value="<?= $email?>">
                     </div>
 
                     <div class="col-12 mb-3">
                         <label for="user-phone" class="form-label">Phone</label>
-                        <input type="text" class="form-control" id="user-phone" placeholder="09xxxxxxxx">
+                        <input type="text" class="form-control" id="user-phone" placeholder="09xxxxxxxx" value="<?= $information[$email]['phone']?>">
                     </div>
 
                     <div class="col-12 mb-3">
                         <label for="user-birthday" class="form-label">Birthday</label>
-                        <input type="date" class="form-control" id="user-birthday" placeholder="dd/mm/yyyy">
+                        <input type="text" class="form-control" id="user-birthday" placeholder="dd/mm/yyyy" value="<?= $information[$email]['birthday']?>">
                     </div>
 
                     <div class="col-12 mb-3">
                         <label for="user-gender" class="form-label">Gender</label>
                         <select class="form-select" aria-label="Default select example">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
+                            <option value="<?= $information[$email]['gender']?>" class="text-capitalize"><?= $information[$email]['gender']?></option>
                         </select>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </body>
 </html>
